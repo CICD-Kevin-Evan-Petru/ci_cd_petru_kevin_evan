@@ -1,0 +1,1 @@
+# Un docker multistage permet de découper le build d'une image en différentes parties
