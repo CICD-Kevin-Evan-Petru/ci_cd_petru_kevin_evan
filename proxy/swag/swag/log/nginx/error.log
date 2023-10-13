@@ -1,0 +1,1 @@
+2023/10/13 11:33:15 [crit] 432#432: connect() to [2a02:26f0:500::5f64:ca68]:80 failed (99: Address not available) while requesting certificate status, responder: r3.o.lencr.org, peer: [2a02:26f0:500::5f64:ca68]:80, certificate: "/config/keys/cert.crt"
