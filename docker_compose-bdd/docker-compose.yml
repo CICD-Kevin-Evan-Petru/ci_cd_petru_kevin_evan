@@ -32,6 +32,12 @@ services:
     ports:
       - 8080:80
 
+  mysqldump: 
+    build: ./mysql-custom
+    container_name: mysql-dumb
+    volumes: 
+      - ./dumps:/dumps
+
 volumes:
   mysql-data:
     driver: local
