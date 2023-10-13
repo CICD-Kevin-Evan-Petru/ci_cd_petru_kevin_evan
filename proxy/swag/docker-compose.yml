@@ -1,0 +1,48 @@
+version: "2.1"
+services:
+  swag:
+    image: lscr.io/linuxserver/swag
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment: 
+      - URL=ynov2023.duckdns.org
+      - SUBDOMAINS=wildcard
+      - VALIDATION=duckdns
+      - DUCKDNSTOKEN=1a66bbb5-e80e-4d4d-8c88-5f7a931485fe
+    volumes:
+      - ./swag:/config
+      - ./config/mail.subdomain.conf:/config/nginx/proxy-confs/mail.subdomain.conf
+      - ./config/gitlab.subdomain.conf:/config/nginx/proxy-confs/gitlab.subdomain.conf
+      - ./config/phpmyadmin.subdomain.conf:/config/nginx/proxy-confs/phpmyadmin.subdomain.conf
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_USER=root
+      - PMA_PASSWORD=
+    volumes:
+      - ./phpmyadmin:/sessions
+    ports:
+      - 8080:80
+    depends_on:
+      - mariadb
+    restart: unless-stopped
