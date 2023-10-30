@@ -22,12 +22,9 @@ jobs:
       run: |
         docker-compose up -d
 
-    # Ajoutez ici les commandes pour initialiser la base de données, si nécessaire
-
     - name: Test web page
       run: |
-        # Ajoutez ici des commandes pour afficher ou tester la page web
-        # Par exemple, vous pouvez utiliser curl pour récupérer le contenu de la page
+        curl http://localhost:80
 
     - name: Stop Docker Compose
       run: |
