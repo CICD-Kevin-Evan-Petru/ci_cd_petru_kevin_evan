@@ -1,0 +1,11 @@
+version: '3'
+services:
+  github-runner:
+    image: myoung34/github-runner:latest
+    environment:
+      - REPO_URL=https://github.com/DreamsEvz/ci_cd_petru_kevin_evan
+      - RUNNER_NAME=github-runner
+      - RUNNER_TOKEN=AKQNMLJ7HUKRR2FYZFWDLK3FH7KGU
+      - ORG_RUNNER=false
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
