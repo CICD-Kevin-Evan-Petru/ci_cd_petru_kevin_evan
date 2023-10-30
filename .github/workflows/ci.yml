@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master  # Remplacez par le nom de la branche sur laquelle vous travaillez, si différent
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Docker
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+
+    - name: Start Docker Compose
+      run: |
+        docker-compose up -d
+
+    # Ajoutez ici les commandes pour initialiser la base de données, si nécessaire
+
+    - name: Test web page
+      run: |
+        # Ajoutez ici des commandes pour afficher ou tester la page web
+        # Par exemple, vous pouvez utiliser curl pour récupérer le contenu de la page
+
+    - name: Stop Docker Compose
+      run: |
+        docker-compose down
