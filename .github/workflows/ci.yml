@@ -24,7 +24,7 @@ jobs:
 
     - name: Test web page
       run: |
-        curl http://localhost:80
+        curl localhost:80
 
     - name: Stop Docker Compose
       run: |
