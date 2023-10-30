@@ -22,6 +22,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./nginx-config:/config
+      - ./index.php:/config/www/index.php
+
     ports:
       - 80:80
       - 443:443
