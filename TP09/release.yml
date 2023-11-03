@@ -1,0 +1,8 @@
+name: Main Branch Tag Workflow
+
+on:
+  push:
+    branches: 
+      - main
+    tags:
+      - '*'
