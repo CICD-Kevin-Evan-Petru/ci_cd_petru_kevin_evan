@@ -1,9 +1,9 @@
-name: Main Branch Tag Workflow
+name: Master Branch Tag Workflow
 
 on:
   push:
     branches:
-      - main
+      - master
     tags:
       - '*'
 
