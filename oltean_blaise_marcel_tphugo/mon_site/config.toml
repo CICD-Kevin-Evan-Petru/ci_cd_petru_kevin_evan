@@ -1,0 +1,4 @@
+baseURL = 'http://boss.test/'
+languageCode = 'en-us'
+title = 'Hello World'
+theme = "ananke"

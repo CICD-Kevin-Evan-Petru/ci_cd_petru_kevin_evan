@@ -1,0 +1,14 @@
+image: registry.gitlab.com/pages/hugo:latest
+
+pages:
+  script:
+    - cd mon_site
+    - git submodule sync --recursive
+    - git submodule update --init --recursive
+    - hugo
+  artifacts:
+    paths:
+      - mon_site/public
+  publish: mon_site/public
+  only:
+    - master
